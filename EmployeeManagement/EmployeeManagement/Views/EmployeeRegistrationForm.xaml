@@ -1,0 +1,109 @@
+﻿<Window x:Class="EmployeeManagement.Views.EmployeeRegistrationForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:local="clr-namespace:EmployeeManagement.Views"
+        xmlns:vm="clr-namespace:EmployeeManagement.ViewModel"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
+        Title="Employee Registration Form" Icon="{StaticResource RegistrationIcon}" Height="Auto" Width="500">
+    <Grid>
+        <Border Margin="5" Style="{StaticResource GenericBorderStyle}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="15"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="20"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Style="{StaticResource RegistrationTextBlockStyle}" Text="Name:" Grid.Row="0" Grid.Column="0" />
+                <TextBox Grid.Row="0" Grid.Column="1" Style="{StaticResource RegistrationTextBoxStyle}"  Text="{Binding EmployeeName,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" MaxLength="100" />
+                <TextBlock Style="{StaticResource RegistrationTextBlockStyle}" Text="SSN:"  Grid.Row="1" Grid.Column="0" />
+                <TextBox  Grid.Row="1" Grid.Column="1" Style="{StaticResource RegistrationTextBoxStyle}" Text="{Binding EmployeeSSN,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" MaxLength="11">
+                    <i:Interaction.Behaviors>
+                        <local:NumericTextBoxBehavior />
+                    </i:Interaction.Behaviors>
+                </TextBox>
+                <TextBlock Style="{StaticResource RegistrationTextBlockStyle}" Text="Title:" Grid.Row="2" Grid.Column="0"  />
+                <TextBox Style="{StaticResource RegistrationTextBoxStyle}"  Grid.Row="2" Grid.Column="1" Text="{Binding EmployeeTitle,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" MaxLength="100"/>
+                <TextBlock Style="{StaticResource RegistrationTextBlockStyle}" Text="Salary:" Grid.Row="3" Grid.Column="0"  />
+                <TextBox Style="{StaticResource RegistrationTextBoxStyle}"  Grid.Row="3" Grid.Column="1" Text="{Binding EmployeeSalary,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" MaxLength="13"/>
+                <TextBlock Style="{StaticResource RegistrationTextBlockStyle}" Text="DOB:" Grid.Row="4" Grid.Column="0" />
+                <Grid Grid.Row="4" Grid.Column="1" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <DatePicker Width="150" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" SelectedDate ="{Binding EmployeeDOB,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
+                        <DatePicker.Resources>
+                            <!-- Make the DatePicker's TextBox non-editable -->
+                            <Style TargetType="DatePickerTextBox">
+                                <Setter Property="IsReadOnly" Value="True" />
+                            </Style>
+                        </DatePicker.Resources>
+                    </DatePicker>
+                    <TextBlock Text="Age:" Margin="15,-5,0,0" Grid.Column="1" Style="{StaticResource RegistrationTextBlockStyle}" VerticalAlignment="Center"/>
+                    <TextBlock Grid.Column="2" Margin="5,-5,0,0" VerticalAlignment="Center" IsEnabled="False" MinWidth="80" Text="{Binding EmployeeAge, StringFormat='{}{0} years'}"/>
+                </Grid>
+
+                <TextBlock Style="{StaticResource RegistrationTextBlockStyle}" Text="Address:" Grid.Row="5" Grid.Column="0" />
+                <TextBox Style="{StaticResource RegistrationTextBoxStyle}"  Grid.Row="5" Grid.Column="1" Text="{Binding EmployeeAddress,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" MaxLength="255"/>
+                <TextBlock Style="{StaticResource RegistrationTextBlockStyle}" Text="City:" Grid.Row="6" Grid.Column="0" />
+                <TextBox Style="{StaticResource RegistrationTextBoxStyle}"  Grid.Row="6" Grid.Column="1" Text="{Binding EmployeeCity,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" MaxLength="100"/>
+                <TextBlock Style="{StaticResource RegistrationTextBlockStyle}" Text="State:" Grid.Row="7" Grid.Column="0" />
+                <TextBox Style="{StaticResource RegistrationTextBoxStyle}"  Grid.Row="7" Grid.Column="1" Text="{Binding EmployeeState,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" MaxLength="50"/>
+                <TextBlock Style="{StaticResource RegistrationTextBlockStyle}" Text="Zip:" Grid.Row="8" Grid.Column="0" />
+                <TextBox Style="{StaticResource RegistrationTextBoxStyle}"  Grid.Row="8" Grid.Column="1" Text="{Binding EmployeeZip,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" MaxLength="10">
+                    <i:Interaction.Behaviors>
+                        <local:NumericTextBoxBehavior />
+                    </i:Interaction.Behaviors>
+                </TextBox>
+                <TextBlock Style="{StaticResource RegistrationTextBlockStyle}" Text="Phone:" Grid.Row="9" Grid.Column="0" />
+                <TextBox Style="{StaticResource RegistrationTextBoxStyle}"  Grid.Row="9" Grid.Column="1" Text="{Binding EmployeePhone,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" MaxLength="15">
+                    <i:Interaction.Behaviors>
+                        <local:NumericTextBoxBehavior />
+                    </i:Interaction.Behaviors>
+                </TextBox>
+                <TextBlock Style="{StaticResource RegistrationTextBlockStyle}" Text="Joining Date:" Grid.Row="10" Grid.Column="0" />
+                <DatePicker Width="150" HorizontalAlignment="Left" SelectedDate = "{Binding EmployeeJoiningDate,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" Grid.Row="10" Grid.Column="1">
+                    <DatePicker.Resources>
+                        <!-- Make the DatePicker's TextBox non-editable -->
+                        <Style TargetType="DatePickerTextBox">
+                            <Setter Property="IsReadOnly" Value="True" />
+                        </Style>
+                    </DatePicker.Resources>
+                </DatePicker>
+                <TextBlock Grid.Row="12" VerticalAlignment="Center" Margin="2" Grid.Column="0" Grid.ColumnSpan="2" Text="Please enter valid inputs in all fields" Visibility="{Binding IsWarningMessageEnabled,Converter={StaticResource BoolVisibilityConverter}}" FontWeight="Bold" Foreground="Red" FontSize="12" FontFamily="Arial"/>
+                <Button Grid.Row="13" Grid.ColumnSpan="3" HorizontalAlignment="Right" Style="{StaticResource ListBtnStyle}" IsDefault="True" Grid.Column="0" Command="{Binding SubmitBtnCommand}" IsEnabled="{Binding IsSubmitEnabled}">
+                    <Button.Content>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0"  VerticalAlignment="Center" Width="25" Height="30" Source="{StaticResource SubmitFormIcon}"/>
+                            <TextBlock Style="{StaticResource RegistrationTextBlockStyle}" VerticalAlignment="Center"  Text="Submit" Grid.Column="1" Margin="4,0,0,0"/>
+                        </Grid>
+                    </Button.Content>
+                </Button>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

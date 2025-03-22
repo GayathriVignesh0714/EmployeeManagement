@@ -1,0 +1,18 @@
+2025-02-11 23:17:23.054 -05:00 [INF] Loading Employee Details..
+2025-02-11 23:17:23.801 -05:00 [INF] Database connection opened successfully.
+2025-02-11 23:17:23.932 -05:00 [INF] Successfully retrieved 100 employees.
+2025-02-11 23:17:38.068 -05:00 [INF] Loading the Employee Details to the Grid..
+2025-02-11 23:17:49.225 -05:00 [INF] Opening Employee Registration Form..
+2025-02-11 23:18:40.161 -05:00 [INF] Loading Titles..
+2025-02-11 23:38:09.241 -05:00 [INF] Loading Employee Details..
+2025-02-11 23:38:09.704 -05:00 [INF] Database connection opened successfully.
+2025-02-11 23:38:09.824 -05:00 [INF] Successfully retrieved 100 employees.
+2025-02-11 23:38:11.681 -05:00 [INF] Loading the Employee Details to the Grid..
+2025-02-11 23:38:44.554 -05:00 [INF] Loading Titles..
+2025-02-11 23:38:55.811 -05:00 [INF] Opening Employee Registration Form..
+2025-02-11 23:42:19.460 -05:00 [INF] Loading Employee Details..
+2025-02-11 23:42:19.934 -05:00 [INF] Database connection opened successfully.
+2025-02-11 23:42:20.043 -05:00 [INF] Successfully retrieved 100 employees.
+2025-02-11 23:42:21.055 -05:00 [INF] Opening Employee Registration Form..
+2025-02-11 23:42:48.938 -05:00 [INF] Loading the Employee Details to the Grid..
+2025-02-11 23:42:57.867 -05:00 [INF] Loading Titles..

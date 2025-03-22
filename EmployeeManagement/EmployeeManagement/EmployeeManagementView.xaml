@@ -1,0 +1,119 @@
+﻿<Window x:Class="EmployeeManagement.EmployeeManagementView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EmployeeManagement"
+        xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase"
+        mc:Ignorable="d"
+        Title="Employee Management" MinHeight="450" MinWidth="800" WindowState="Maximized" ResizeMode="CanResize" 
+        Icon="{StaticResource AppIcon}" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Border Style="{StaticResource GenericBorderStyle}" Grid.Row="0" Margin="2" >
+            <StackPanel  Orientation="Horizontal" HorizontalAlignment="Left">
+                <Button Style="{StaticResource ListBtnStyle}" Margin="2" Command="{Binding ListButtonCommand}">
+                    <Button.Content>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Width="25" Height="20" Source="{StaticResource EmployeeListIcon}"/>
+                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Text="List Employee Details" Grid.Column="1" Margin="4,0,0,0"/>
+                        </Grid>
+                    </Button.Content>
+                </Button>
+                <Button Style="{StaticResource ListBtnStyle}" Margin="2" Command="{Binding OpenEmployeeRegistrationFormCommand}">
+                    <Button.Content>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Width="25" Height="20" Source="{StaticResource EmployeeAddIcon}"/>
+                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Text="Add Employee Details" Grid.Column="1" Margin="4,0,0,0"/>
+                        </Grid>
+                    </Button.Content>
+                </Button>
+            </StackPanel>
+        </Border>
+        <Grid Grid.Row="1" IsEnabled="{Binding IsFilterEnabled,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal" Grid.Column="0" Margin="2" HorizontalAlignment="Left" >
+                <Label Content="Filter by Name"/>
+                <TextBox Height="25" Margin="2" Width="200" Text="{Binding FilterName,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Column="1" Margin="2" HorizontalAlignment="Left">
+                <Label Content="Filter by Title"/>
+                <TextBox Height="25" Width="200" Margin="2"  Text="{Binding FilterTitle,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+            </StackPanel>
+            <Button x:Name="BtnFilter" Width="25" Height="25"  Margin="2" Grid.Column="2" HorizontalAlignment="Left" Command="{Binding FilterCommand}">
+                <Button.Content>
+                    <Image Source="{StaticResource FilterIcon}"/>
+                </Button.Content>
+            </Button>
+            <Button x:Name="BtnTitleClearFilter"  Width="25" Height="25"  Margin="2" Grid.Column="3" HorizontalAlignment="Left"  Command="{Binding ClearFilterCommand}">
+                <Button.Content>
+                    <Image Source="{StaticResource ClearFilterIcon}"/>
+                </Button.Content>
+            </Button>
+        </Grid>
+        <Border  Grid.Row="2" Margin="2"  Style="{StaticResource DataGridBorderStyle}">
+            <Grid>
+                <DataGrid  VerticalScrollBarVisibility="Auto" Margin="5" MinHeight="150" MaxHeight="300"
+                 HorizontalScrollBarVisibility="Auto" GridLinesVisibility="None" EnableColumnVirtualization="True" EnableRowVirtualization="True"
+                  ItemsSource="{Binding EmployeesViewCollection,UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"
+                  AutoGenerateColumns="True"  Width="Auto" CanUserResizeColumns="True" ColumnWidth="*" >
+                </DataGrid>
+            </Grid>
+        </Border>
+        <!-- Loading Spinner -->
+        <StackPanel Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="{Binding IsLoading,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay, Converter={StaticResource BoolVisibilityConverter}}">
+            <TextBlock Text="Loading..." FontSize="14" HorizontalAlignment="Center" />
+            <ProgressBar IsIndeterminate="True" Width="200" Height="15" Margin="5" />
+        </StackPanel>
+
+        <Border Grid.Row="4" Margin="2" Style="{StaticResource GenericBorderStyle}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Button Grid.Row="0" Grid.Column="0" Style="{StaticResource ListBtnStyle}" Margin="2" Command="{Binding TitleButtonCommand}">
+                    <Button.Content>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Width="25" Height="20" Source="{StaticResource EmployeeListIcon}"/>
+                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Text="List Titles" Grid.Column="1" Margin="4,0,0,0"/>
+                        </Grid>
+                    </Button.Content>
+                </Button>
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="5"  Margin="2" Style="{StaticResource DataGridBorderStyle}">
+            <Grid>
+                <DataGrid VerticalScrollBarVisibility="Auto" Margin="5"  MaxHeight="300"
+             HorizontalScrollBarVisibility="Auto" GridLinesVisibility="None" EnableColumnVirtualization="True" EnableRowVirtualization="True"
+           ItemsSource="{Binding TitlesViewCollection,UpdateSourceTrigger=PropertyChanged}" diag:PresentationTraceSources.TraceLevel ="High"
+           AutoGenerateColumns="True"  Width="Auto" MinHeight="150" IsReadOnly="True" CanUserResizeColumns="True" ColumnWidth="*" CanUserAddRows="False" />
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

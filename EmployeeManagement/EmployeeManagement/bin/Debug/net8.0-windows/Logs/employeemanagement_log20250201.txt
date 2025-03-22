@@ -1,0 +1,9 @@
+2025-02-01 19:26:30.678 -05:00 [INF] Loading Employee Deatails...
+2025-02-01 19:29:16.361 -05:00 [INF] Loading Employee Details..
+2025-02-01 19:29:24.406 -05:00 [ERR] Error loading employees: System.NullReferenceException: Object reference not set to an instance of an object.
+   at EmployeeManagement.ViewModel.EmployeeManagementViewModel.LoadEmployeeDetails() in C:\Users\91996\Desktop\MY WPF Projects\ManageEmployee_Refactored\EmployeeManagment\ViewModel\EmployeeManagementViewModel.cs:line 557
+2025-02-01 19:40:26.769 -05:00 [INF] Loading Employee Details..
+2025-02-01 19:40:35.584 -05:00 [INF] Loading the Employee Details to the Grid..
+2025-02-01 19:40:42.133 -05:00 [ERR] Error processing employee list in the method 0
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at EmployeeManagement.ViewModel.EmployeeManagementViewModel.ListButtonClick(Object obj) in C:\Users\91996\Desktop\MY WPF Projects\ManageEmployee_Refactored\EmployeeManagment\ViewModel\EmployeeManagementViewModel.cs:line 588
